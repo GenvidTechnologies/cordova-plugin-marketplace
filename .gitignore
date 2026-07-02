@@ -5,3 +5,4 @@ node_modules/
 *.p12
 *.log
 demo/build.json
+plan.md
