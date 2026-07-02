@@ -63,6 +63,7 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 
 - Published as **`@genvidtech/cordova-plugin-marketplace`** (scoped) because the unscoped npm name `cordova-plugin-marketplace` is taken by an unrelated package.
 - Keep **`.npmignore`** accurate — it controls what ships in the published `.tgz`. The README calls this out explicitly.
+- The **published npm scope is baked into the packed tarball filename**: `npm pack` emits `<scope-without-@>-cordova-plugin-marketplace-<version>.tgz` (e.g. `@genvidtech` → `genvidtech-cordova-plugin-marketplace-<v>.tgz`). Two places hard-code that name — `demo/config.xml`'s `<plugin name="file://../…tgz">` pin and `scripts/version-guard.js`'s plugin-pin regex — so a **scope change must update both**. Note `genvid` is *not* a prefix-substring of `genvidtech-cordova…`: a stale regex **fails to match** (hard error), it doesn't match loosely. The tests tarball is unscoped (`cordova-plugin-marketplace-tests-<v>.tgz`) and is unaffected.
 - Source files carry the Apache-2.0 license header (the plugin itself is **MIT-0**); preserve headers when editing.
 - This plugin was forked from an internal **EOS (Epic Online Services)** plugin. Leftover `eos` references remain in the README, the demo app id (`com.genvidtech.eosdemo`), and a test heading ("EOS Tests"). These are stale naming, not separate functionality.
 - Repository is hosted on **GitHub** (`GenvidTechnologies/cordova-plugin-marketplace`), public. (It was previously on Bitbucket; some historical references may linger.)
