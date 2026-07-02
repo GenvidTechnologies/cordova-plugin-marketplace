@@ -9,7 +9,7 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <plugin name="file://../genvid-cordova-plugin-marketplace-1.1.1.tgz" />
+    <plugin name="file://../genvidtech-cordova-plugin-marketplace-1.1.1.tgz" />
     <plugin name="file://../cordova-plugin-marketplace-tests-1.1.1.tgz" />
     <plugin name="cordova-plugin-test-framework" />
     <platform name="ios">

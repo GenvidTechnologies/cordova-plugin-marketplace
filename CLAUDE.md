@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this plugin does
 
-`@genvid/cordova-plugin-marketplace` is a small Cordova plugin that reports **how the app was installed / which app marketplace it came from**. It exposes a single JS API, `window.plugins.marketplace`, with one native action: `getInfo`.
+`@genvidtech/cordova-plugin-marketplace` is a small Cordova plugin that reports **how the app was installed / which app marketplace it came from**. It exposes a single JS API, `window.plugins.marketplace`, with one native action: `getInfo`.
 
 - **Android**: install source via `PackageManager` — `getInstallSourceInfo()` on API ≥ 30 (S), falling back to `getInstallerPackageName()` on older devices. Returns the initiating/installing/originating/update-owner package names.
 - **iOS** (17.4+): `MarketplaceKit`'s `AppDistributor.current` — resolves to `AppStore`, `TestFlight`, `web`, `Other`, or an alternative marketplace's identifier.
@@ -51,7 +51,7 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 
 ### CI / Publishing
 
-- **GitHub Actions** owns packaging and publishing. `.github/workflows/ci.yml` runs the shared `genvid-public-ci` gate (lint / typecheck / test / build) on PRs and pushes to `main`. `.github/workflows/publish.yml` fires on a `vX.Y.Z` tag and publishes `@genvid/cordova-plugin-marketplace` to npm via **OIDC trusted publishing** (`--provenance`, no stored token). The tag must match `package.json`'s `version`. See the **Releasing** section of the README; use the `release-npm-package` skill to cut a release.
+- **GitHub Actions** owns packaging and publishing. `.github/workflows/ci.yml` runs the shared `github-actions-public` gate (lint / typecheck / test / build) on PRs and pushes to `main`. `.github/workflows/publish.yml` fires on a `vX.Y.Z` tag and publishes `@genvidtech/cordova-plugin-marketplace` to npm via **OIDC trusted publishing** (`--provenance`, no stored token). The tag must match `package.json`'s `version`. See the **Releasing** section of the README; use the `release-npm-package` skill to cut a release.
 - **Native CI on GitHub Actions** — `.github/workflows/android.yml` and `ios.yml` each run a **smoke** build (compile/link; Android on `ubuntu-latest`, iOS on the `macos-15` simulator) on PRs and pushes to `main` with no secrets, and a **distribute** job (`workflow_dispatch` + `vX.Y.Z` tags) that builds a signed sideload artifact using signing material pulled from 1Password via the single `OP_SERVICE_ACCOUNT_TOKEN` repo secret (service account scoped to the `Project-Burbank` vault). Android produces a signed `.apk`. The iOS distribute job is present but **disabled** (`if: false`) pending a signing identity — the available `.p12` is cert-only (no private key), which is also why the old CircleCI iOS job only ever packaged the unsigned simulator build. A `version-guard` step keeps `package.json` / `tests/package.json` / `demo/config.xml` versions in lockstep. **CircleCI has been removed.**
 
 ### Platform notes
@@ -61,9 +61,9 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 
 ## Conventions / gotchas
 
-- Published as **`@genvid/cordova-plugin-marketplace`** (scoped) because the unscoped npm name `cordova-plugin-marketplace` is taken by an unrelated package.
+- Published as **`@genvidtech/cordova-plugin-marketplace`** (scoped) because the unscoped npm name `cordova-plugin-marketplace` is taken by an unrelated package.
 - Keep **`.npmignore`** accurate — it controls what ships in the published `.tgz`. The README calls this out explicitly.
 - Source files carry the Apache-2.0 license header (the plugin itself is **MIT-0**); preserve headers when editing.
 - This plugin was forked from an internal **EOS (Epic Online Services)** plugin. Leftover `eos` references remain in the README, the demo app id (`com.genvidtech.eosdemo`), and a test heading ("EOS Tests"). These are stale naming, not separate functionality.
-- Repository is hosted on **GitHub** (`genvid-holdings/cordova-plugin-marketplace`), public. (It was previously on Bitbucket; some historical references may linger.)
+- Repository is hosted on **GitHub** (`GenvidTechnologies/cordova-plugin-marketplace`), public. (It was previously on Bitbucket; some historical references may linger.)
 - **iOS version floors**: `Marketplace.swift` compiles at **iOS 14** (it uses `os.Logger`, gated via `@available(iOS 14.0)` / `if #available(iOS 14.0, *)`) and is *functional* at **iOS 17.4** (`MarketplaceKit`'s `AppDistributor`, gated via `if #available(iOS 17.4, *)`, with `.web` at 17.5); below 17.4 it returns `"AppStore"`. Keep the `@available` annotations at 14 — annotating lower (e.g. 13) fails to compile because `Logger` is iOS 14+. `demo/config.xml` pins `deployment-target` to 14 to match.
