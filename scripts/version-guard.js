@@ -3,7 +3,7 @@
 
 // Guards the version lockstep that `npm run setup:demo` depends on.
 //
-// `npm run package` produces `genvid-cordova-plugin-marketplace-<version>.tgz`
+// `npm run package` produces `genvidtech-cordova-plugin-marketplace-<version>.tgz`
 // and `cordova-plugin-marketplace-tests-<version>.tgz`. `demo/config.xml` pins
 // those exact filenames (and a widget version). If `package.json` /
 // `tests/package.json` are bumped without updating `demo/config.xml`, the CI
@@ -33,7 +33,7 @@ const testsVersion = versionOf('tests/package.json');
 
 const configXml = fs.readFileSync(path.join(root, 'demo', 'config.xml'), 'utf8');
 const widgetVersion = firstMatch(configXml, /<widget[^>]*\sversion="([^"]+)"/, 'widget version');
-const pluginPin = firstMatch(configXml, /genvid-cordova-plugin-marketplace-([\d.]+)\.tgz/, 'plugin .tgz pin');
+const pluginPin = firstMatch(configXml, /genvidtech-cordova-plugin-marketplace-([\d.]+)\.tgz/, 'plugin .tgz pin');
 const testsPin = firstMatch(configXml, /cordova-plugin-marketplace-tests-([\d.]+)\.tgz/, 'tests .tgz pin');
 
 const checks = [

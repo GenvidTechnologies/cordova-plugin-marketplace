@@ -6,11 +6,11 @@ Reports how the app was installed / which app marketplace it came from. Exposes
 ## Installation
 
 ```bash
-cordova plugin add @genvid/cordova-plugin-marketplace
+cordova plugin add @genvidtech/cordova-plugin-marketplace
 ```
 
 The plugin is published publicly to npm under the
-[`@genvid`](https://www.npmjs.com/package/@genvid/cordova-plugin-marketplace)
+[`@genvidtech`](https://www.npmjs.com/package/@genvidtech/cordova-plugin-marketplace)
 scope.
 
 ## Development
@@ -36,7 +36,7 @@ npm run package
 
 This will create two packages:
 
-* `genvid-cordova-plugin-marketplace-<version>.tgz` for the plugin
+* `genvidtech-cordova-plugin-marketplace-<version>.tgz` for the plugin
 * `cordova-plugin-marketplace-tests-<version>.tgz` for the tests
 
 #### Notice
