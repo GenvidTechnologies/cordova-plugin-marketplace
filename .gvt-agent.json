@@ -1,0 +1,31 @@
+{
+  "project": {
+    "name": "cordova-plugin-marketplace",
+    "description": "Cordova plugin reporting the app's install source / marketplace (Android PackageManager, iOS MarketplaceKit).",
+    "languages": ["javascript", "java", "swift"]
+  },
+  "commands": {
+    "test": "npm run test",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck",
+    "build": "npm run build",
+    "validate": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "repo": {
+    "host": "github",
+    "default_branch": "main"
+  },
+  "features": {},
+  "paths": {},
+  "bugTracker": {
+    "kind": "github",
+    "actionQuery": "gh issue list --state open -L 200 --json number,title,labels,body,assignees,author,createdAt,milestone",
+    "comparisonQuery": "gh issue list --state all -L 500 --json number,title,labels,state",
+    "readOne": "gh issue view {id} --json number,title,body,labels,comments",
+    "commentsQuery": "gh issue list --state open -L 200 --json number,comments",
+    "structureQuery": "gh issue list --state open -L 200 --json number,parent,subIssuesSummary",
+    "refStateQuery": "gh api repos/{repo}/issues/{id} --jq '{number,state,state_reason,closed_at,pull_request:(.pull_request != null),sub_issues_summary}'",
+    "triagedLabel": "triaged",
+    "needsInfoLabel": "needs-info"
+  }
+}

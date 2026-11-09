@@ -11,4 +11,8 @@ are created so the plugin's skills can discover them.
 - `../README.md` — build, package, and demo-run instructions; manual Android install workaround.
 - `../CLAUDE.md` — architecture overview (JS bridge + Android/iOS native layers), commands, and conventions.
 
-<!-- No dedicated docs/ files yet. Add e.g. architecture.md, design-patterns.md as the project grows. -->
+## Process
+
+- `issue-triage.md` — issue triage conventions (types, priorities, labels, mutation recipes) consumed by `/gvt-dev:triage-issues`.
+
+<!-- Add further docs/ files here (e.g. architecture.md, design-patterns.md) as the project grows. -->
