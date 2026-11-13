@@ -64,7 +64,7 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 ## Issue triage
 
 - `.gvt-agent.json` holds the gvt-dev config, including the `bugTracker` block that `/gvt-dev:triage-issues` reads. It was renamed from `.genvid-agent.json`; current gvt-dev skills read only the new name.
-- `docs/issue-triage.md` is the triage contract. Labels use the structured scheme: one `type:*` for defects (or a category label `enhancement` / `documentation` / `chore` for other work), one `priority/P0`–`P3`, and one or more of `area:js`, `area:android`, `area:ios`, `area:ci`, `area:demo`. `needs-info` flags missing information, and `triaged` is set last.
+- `docs/issue-triage.md` is the triage contract. Labels use the structured scheme: one `type:*` for defects (or a category label `enhancement` / `documentation` / `chore` for other work), one `priority/P0`–`P3`, and one or more of `area:js`, `area:android`, `area:ios`, `area:ci`, `area:demo`, `area:docs`. A non-defect carries exactly one category label. `needs-info` flags missing information, and `triaged` is set last.
 
 ## Conventions / gotchas
 
