@@ -24,8 +24,9 @@ Set the type via the matching `type:*` label; exactly one per issue.
 
 **Non-defect work** (a feature request, docs change, or chore) is *not* a
 `type:*` — `type:*` is reserved for defects. Classify it by its category label
-instead (`enhancement`, `documentation`, `chore`) and leave `type:*` unset. It
-still gets a `priority/*` and at least one `area:*`.
+instead (`enhancement`, `documentation`, `chore`) and leave `type:*` unset.
+Exactly one category label per issue: when two seem to fit, keep the one that
+names the main outcome. It still gets a `priority/*` and at least one `area:*`.
 
 ## Priorities
 
@@ -45,7 +46,8 @@ Decision rule: pick by the worst **observable** impact, not the suspected cause.
   - `area:ios` — `src/ios/Marketplace.swift`, MarketplaceKit, and iOS signing.
   - `area:ci` — GitHub Actions workflows, `scripts/`, packaging and publishing.
   - `area:demo` — the `demo/` harness app and the `tests/` package.
-- Category labels for non-defect work: `enhancement`, `documentation`, `chore`.
+  - `area:docs` — project documentation: `docs/` (or the wiki), `README.md`, `CLAUDE.md`.
+- Category labels for non-defect work: `enhancement`, `documentation`, `chore` — exactly one.
 - `priority/*` — exactly one: `priority/P0` … `priority/P3`.
 - `needs-info` — set when required fields are missing; cleared when supplied.
 - `duplicate` — set on non-canonical members of a duplicate cluster.
