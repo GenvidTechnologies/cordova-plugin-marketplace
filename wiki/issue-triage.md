@@ -1,7 +1,14 @@
+---
+type: convention
+title: 'Issue Triage Conventions'
+description: 'Project conventions that /gvt-dev:triage-issues reads: types, priorities, labels, required fields, splitting, duplicates, dependencies and mutation recipes.'
+tags: [triage]
+status: stable
+---
 # Issue Triage Conventions
 
 > Project conventions consumed by `/gvt-dev:triage-issues`. The skill copies this
-> file to the contract path `.gvt-agent.json` resolves for `docs/issue-triage.md`; edit it for your tracker and taxonomy. The companion
+> file to the contract path that `.gvt-agent.json` resolves (`<wikiDir>/issue-triage.md` unless `paths` overrides it); edit it for your tracker and taxonomy. The companion
 > **access mechanics** (fetch queries, label names) live in the `bugTracker`
 > block of `.gvt-agent.json` — see the skill's SKILL.md for that block.
 >
@@ -46,7 +53,7 @@ Decision rule: pick by the worst **observable** impact, not the suspected cause.
   - `area:ios` — `src/ios/Marketplace.swift`, MarketplaceKit, and iOS signing.
   - `area:ci` — GitHub Actions workflows, `scripts/`, packaging and publishing.
   - `area:demo` — the `demo/` harness app and the `tests/` package.
-  - `area:docs` — project documentation: `docs/` (or the wiki), `README.md`, `CLAUDE.md`.
+  - `area:docs` — project documentation: the wiki (`wiki/`), `README.md`, `CLAUDE.md`.
 - Category labels for non-defect work: `enhancement`, `documentation`, `chore` — exactly one.
 - `priority/*` — exactly one: `priority/P0` … `priority/P3`.
 - `needs-info` — set when required fields are missing; cleared when supplied.
