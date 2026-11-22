@@ -63,7 +63,7 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 
 ## Documentation
 
-- `wiki/` is the only documentation folder, in the `maintain-wiki` format of the gvt-wiki plugin (`wiki.wikiDir` in `.gvt-agent.json`). Every page opens with OKF frontmatter. `wiki/index.md` lists the pages and is the documentation index that gvt-dev skills read. `wiki/log.md` records changes to the page set, and `wiki/schema.md` holds the rules. A new or changed page adds a dated entry to `wiki/log.md`.
+- `wiki/` is the only documentation folder, in the `maintain-wiki` format of the gvt-wiki plugin (`wiki.wikiDir` in `.gvt-agent.json`). `wiki/index.md` lists the pages and is the documentation index that gvt-dev skills read. `wiki/log.md` records changes to the page set, and `wiki/schema.md` holds the rules. Every other page opens with OKF frontmatter and a non-empty `type`. The two reserved files differ: `index.md` carries only `okf_version`, and `log.md` carries no frontmatter, as in the gvt-wiki templates. A new or changed page adds a dated entry to `wiki/log.md`.
 - `.npmignore` excludes `/wiki/`, so the wiki does not ship in the npm tarball.
 
 ## Issue triage
