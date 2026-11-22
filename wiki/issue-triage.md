@@ -8,7 +8,7 @@ status: stable
 # Issue Triage Conventions
 
 > Project conventions consumed by `/gvt-dev:triage-issues`. The skill copies this
-> file to the contract path `.gvt-agent.json` resolves for `docs/issue-triage.md`; edit it for your tracker and taxonomy. The companion
+> file to the contract path that `.gvt-agent.json` resolves (`<wikiDir>/issue-triage.md` unless `paths` overrides it); edit it for your tracker and taxonomy. The companion
 > **access mechanics** (fetch queries, label names) live in the `bugTracker`
 > block of `.gvt-agent.json` — see the skill's SKILL.md for that block.
 >

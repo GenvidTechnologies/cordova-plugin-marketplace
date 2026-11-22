@@ -25,8 +25,8 @@ OKF has already shipped one breaking revision within v0.x: v0.1's body `# Citati
 
 **This project.** `wiki.wikiDir` is `wiki`. The wiki is the only documentation surface: the repository has no `docs/` folder. Outside the bundle, the tracked Markdown files are `README.md`, `CLAUDE.md` and `CONVENTIONS.md` (a copy of the gvt-dev contract) at the repository root. Other locations:
 
-- **The documentation index** is `wiki/index.md`. `.gvt-agent.json` sets no `paths['docs/TOC.md']` override, so gvt-dev resolves the index to `<wikiDir>/index.md`.
-- **Triage conventions** are `wiki/issue-triage.md`. `.gvt-agent.json` sets no `paths['docs/issue-triage.md']` override, so `/gvt-dev:triage-issues` resolves the contract to `<wikiDir>/issue-triage.md`.
+- **The documentation index** is `wiki/index.md`. `.gvt-agent.json` sets no `paths` override for it, so gvt-dev resolves the index to `<wikiDir>/index.md`.
+- **Triage conventions** are `wiki/issue-triage.md`. `.gvt-agent.json` sets no `paths` override for it, so `/gvt-dev:triage-issues` resolves the contract to `<wikiDir>/issue-triage.md`.
 - **`raw/`** does not exist yet. The pages describe this repository's own code and process, and cite repository files in their body text. No page carries `sources` yet.
 - **npm package.** `.npmignore` excludes `/wiki/`, so no wiki page ships in the published tarball.
 

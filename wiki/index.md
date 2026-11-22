@@ -6,7 +6,7 @@ okf_version: "0.2"
 
 This wiki is the documentation of `@genvidtech/cordova-plugin-marketplace`. It lists every page under `wiki/`, grouped under section headings, one line each. Each entry's text is the linked page's frontmatter `description`. The page format and the maintenance rules are in [the schema](schema.md). The change log is [log.md](log.md).
 
-Gvt-dev skills read this page as the documentation index. With no `paths['docs/TOC.md']` override in `.gvt-agent.json`, the index is `<wikiDir>/index.md`, which is this page.
+Gvt-dev skills read this page as the documentation index. `.gvt-agent.json` sets no `paths` override for the index, so gvt-dev resolves it to `<wikiDir>/index.md`, which is this page.
 
 ## Project context
 
