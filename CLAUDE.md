@@ -61,10 +61,15 @@ The gate scripts `npm run typecheck` (`tsc --noEmit` over `types/index.d.ts`), `
 - **iOS** signing: `setup:demo:config` substitutes the `APPLE_DEVELOPMENT_TEAM` env var into `ios-build.json` → `demo/build.json` for signed device builds; `setup:demo:sim` skips it (the simulator smoke build needs no signing or `build.json`). `xcode` / `ios-deploy` are installed by `setup:demo:ios`; the `setup:demo:sim:ios` variant omits them. The demo's iOS deployment target is pinned to `14.0` in `demo/config.xml` because `Marketplace.swift` uses `os.Logger` (iOS 14+); the MarketplaceKit path is `#available`-gated for 17.4.
 - **Android ABI mismatch**: Cordova sometimes picks the wrong APK ABI on `run`, failing with `INSTALL_FAILED_NO_MATCHING_ABIS`. Manually `adb install -r` the APK matching the device ABI from `demo/platforms/android/.../apk/debug/`, then launch with `adb shell am start -n com.genvidtech.eosdemo/...MainActivity`. See README for the exact incantation.
 
+## Documentation
+
+- `wiki/` is the only documentation folder, in the `maintain-wiki` format of the gvt-wiki plugin (`wiki.wikiDir` in `.gvt-agent.json`). Every page opens with OKF frontmatter. `wiki/index.md` lists the pages and is the documentation index that gvt-dev skills read. `wiki/log.md` records changes to the page set, and `wiki/schema.md` holds the rules. A new or changed page adds a dated entry to `wiki/log.md`.
+- `.npmignore` excludes `/wiki/`, so the wiki does not ship in the npm tarball.
+
 ## Issue triage
 
 - `.gvt-agent.json` holds the gvt-dev config, including the `bugTracker` block that `/gvt-dev:triage-issues` reads. It was renamed from `.genvid-agent.json`; current gvt-dev skills read only the new name.
-- `docs/issue-triage.md` is the triage contract. Labels use the structured scheme: one `type:*` for defects (or a category label `enhancement` / `documentation` / `chore` for other work), one `priority/P0`–`P3`, and one or more of `area:js`, `area:android`, `area:ios`, `area:ci`, `area:demo`, `area:docs`. A non-defect carries exactly one category label. `needs-info` flags missing information, and `triaged` is set last.
+- `wiki/issue-triage.md` is the triage contract. `.gvt-agent.json` sets no `paths` override for it: gvt-dev 6.x resolves the contract to `<wikiDir>/issue-triage.md` by default. Labels use the structured scheme: one `type:*` for defects (or a category label `enhancement` / `documentation` / `chore` for other work), one `priority/P0`–`P3`, and one or more of `area:js`, `area:android`, `area:ios`, `area:ci`, `area:demo`, `area:docs`. A non-defect carries exactly one category label. `needs-info` flags missing information, and `triaged` is set last.
 
 ## Conventions / gotchas
 
